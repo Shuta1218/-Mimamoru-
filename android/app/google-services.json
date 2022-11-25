@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "733392555445",
+    "firebase_url": "https://sensor-test-d8aa3-default-rtdb.firebaseio.com",
+    "project_id": "sensor-test-d8aa3",
+    "storage_bucket": "sensor-test-d8aa3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733392555445:android:2b1e019ab67055fa269dfc",
+        "android_client_info": {
+          "package_name": "board.com.example.board"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733392555445-j3lai7p6tdkjoi5v1e6a8mm5vj9hudre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS2H3dy9mv1o6Zu3jjA5pIScr1LJfqrvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733392555445-j3lai7p6tdkjoi5v1e6a8mm5vj9hudre.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733392555445:android:bce9c9e7ddaca8d0269dfc",
+        "android_client_info": {
+          "package_name": "com.example.im_looking_you"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733392555445-j3lai7p6tdkjoi5v1e6a8mm5vj9hudre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS2H3dy9mv1o6Zu3jjA5pIScr1LJfqrvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733392555445-j3lai7p6tdkjoi5v1e6a8mm5vj9hudre.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733392555445:android:cd49163b93f781e5269dfc",
+        "android_client_info": {
+          "package_name": "com.example.mimamoru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733392555445-j3lai7p6tdkjoi5v1e6a8mm5vj9hudre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAS2H3dy9mv1o6Zu3jjA5pIScr1LJfqrvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733392555445-j3lai7p6tdkjoi5v1e6a8mm5vj9hudre.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
