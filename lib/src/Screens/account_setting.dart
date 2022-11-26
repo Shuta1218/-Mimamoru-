@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -51,7 +52,9 @@ class _AccountSettingState extends State<AccountSetting> {
                         prefs.setString('watchTarget', watchTarget);
                         Navigator.pop(context);
                       }else{
-                        print('何も入ってない');
+                        if (kDebugMode) {
+                          print('何も入ってない');
+                        }
                       }
                     },
                     child: const Text('送信')

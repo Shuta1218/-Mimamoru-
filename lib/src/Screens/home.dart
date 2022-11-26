@@ -1,5 +1,4 @@
-import 'dart:ffi';
-
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -32,15 +31,19 @@ class _HomeState extends State<Home> {
         DateTime now = DateTime.now();
 
         currentTime = '${now.year}年${now.month}月${now.day}日${now.hour}時${now.minute}分${now.second}秒';
-        print('--------------------------------------------------');
-        print(currentTime);
-        print('--------------------------------------------------');
-        time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString()!;
-        print(time);
+        if (kDebugMode) {
+          print('--------------------------------------------------');
+          print(currentTime);
+          print('--------------------------------------------------');
+        }
+        time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString();
+        if (kDebugMode) {
+          print(time);
+        }
 
         if(time == "null") {
-          DateTime yd = now.subtract(Duration(days: 1));
-          time = sensorTime.child("${yd.year}/${yd.month}/${yd.day}").value.toString()!;
+          DateTime yd = now.subtract(const Duration(days: 1));
+          time = sensorTime.child("${yd.year}/${yd.month}/${yd.day}").value.toString();
         }
 
         time = time.replaceAll("{", "");
@@ -56,13 +59,17 @@ class _HomeState extends State<Home> {
 
         hal_len = hal.length-1;
 
-        print(targetName);
-        print(hal_len);
-        print(hal_len.runtimeType);
+        if (kDebugMode) {
+          print(targetName);
+          print(hal_len);
+          print(hal_len.runtimeType);
+        }
 
         hal_Len = hal_len.toString();
 
-        print(hal_Len.runtimeType);
+        if (kDebugMode) {
+          print(hal_Len.runtimeType);
+        }
 
 
       });
@@ -90,7 +97,7 @@ class _HomeState extends State<Home> {
       body: RefreshIndicator(
         onRefresh: () async{
           Future(() async{
-            await Future.delayed(Duration(seconds: 3));
+            await Future.delayed(const Duration(seconds: 3));
             final prefs = await SharedPreferences.getInstance();
             WidgetsFlutterBinding.ensureInitialized();
             await Firebase.initializeApp();
@@ -104,11 +111,15 @@ class _HomeState extends State<Home> {
               DateTime now = DateTime.now();
 
               currentTime = '${now.year}年${now.month}月${now.day}日${now.hour}時${now.minute}分${now.second}秒';
-              print('--------------------------------------------------');
-              print(currentTime);
-              print('--------------------------------------------------');
-              time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString()!;
-              print(time);
+              if (kDebugMode) {
+                print('--------------------------------------------------');
+                print(currentTime);
+                print('--------------------------------------------------');
+              }
+              time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString();
+              if (kDebugMode) {
+                print(time);
+              }
 
               // while(time == "null") {
               //   DateTime yd = now.subtract(Duration(days: 1));
@@ -134,7 +145,7 @@ class _HomeState extends State<Home> {
         child: Container(
           // color: Colors.lightBlue,
           height: MediaQuery.of(context).size.height * 0.79,
-          padding: EdgeInsets.all(0.0),
+          padding: const EdgeInsets.all(0.0),
           child: Column(
             children: [
 
@@ -155,11 +166,11 @@ class _HomeState extends State<Home> {
                   child: Column(
                     children: [
                       ListTile(
-                        title: Text('見守り対象',style: TextStyle(fontSize: 20.0)),
-                        subtitle: Text(targetName,style:TextStyle(fontSize: 30.0)),
+                        title: const Text('見守り対象',style: TextStyle(fontSize: 20.0)),
+                        subtitle: Text(targetName,style:const TextStyle(fontSize: 30.0)),
                       ),
-                      Text('反応した時間',style: TextStyle(fontSize: 32.0)),
-                      Text(hal[0],style: TextStyle(fontSize: 50.0))
+                      const Text('反応した時間',style: TextStyle(fontSize: 32.0)),
+                      Text(hal[0],style: const TextStyle(fontSize: 50.0))
                     ],
                   ),
                 ),
@@ -177,8 +188,8 @@ class _HomeState extends State<Home> {
                   ),
                   child: Column(
                     children: [
-                      Text('今日反応した回数',style: TextStyle(fontSize: 32.0)),
-                      Text(hal_Len,style: TextStyle(fontSize: 50.0))
+                      const Text('今日反応した回数',style: TextStyle(fontSize: 32.0)),
+                      Text(hal_Len,style: const TextStyle(fontSize: 50.0))
                     ],
                   ),
                 ),
@@ -202,11 +213,11 @@ class _HomeState extends State<Home> {
                           DateTime now = DateTime.now();
 
                           currentTime = '${now.year}年${now.month}月${now.day}日${now.hour}時${now.minute}分${now.second}秒';
-                          time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString()!;
+                          time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString();
 
                           if(time == "null") {
                             DateTime yd = now.subtract(const Duration(days: 1));
-                            time = sensorTime.child("${yd.year}/${yd.month}/${yd.day}").value.toString()!;
+                            time = sensorTime.child("${yd.year}/${yd.month}/${yd.day}").value.toString();
                           }
 
                           time = time.replaceAll("{", "");
@@ -222,7 +233,7 @@ class _HomeState extends State<Home> {
 
                         });
                       },
-                    child: Text("更新"),
+                    child: const Text("更新"),
 
                   ),
                 ],

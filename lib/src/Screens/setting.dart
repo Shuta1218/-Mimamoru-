@@ -34,16 +34,16 @@ class _SettingState extends State<Setting> {
 
               child: ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AccountSetting()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const AccountSetting()));
                 },
 
-                label: Text("対象設定",style: TextStyle(fontSize: 30)),
+                label: const Text("対象設定",style: TextStyle(fontSize: 30)),
 
-                icon: Icon(Icons.person),
+                icon: const Icon(Icons.person),
 
                 style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.black,
                   backgroundColor: Colors.white,
-                  primary: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -55,16 +55,16 @@ class _SettingState extends State<Setting> {
               width: MediaQuery.of(context).size.width*0.6,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Calendar()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Calendar()));
                 },
 
-                label: Text("カレンダー",style: TextStyle(fontSize: 30)),
+                label: const Text("カレンダー",style: TextStyle(fontSize: 30)),
 
-                icon: Icon(Icons.calendar_month),
+                icon: const Icon(Icons.calendar_month),
 
                 style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.black,
                   backgroundColor: Colors.white,
-                  primary: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -76,16 +76,16 @@ class _SettingState extends State<Setting> {
               width: MediaQuery.of(context).size.width*0.6,
               child: ElevatedButton.icon(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => Manual()));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const Manual()));
                 },
 
-                label: Text("使い方",style: TextStyle(fontSize: 30)),
+                label: const Text("使い方",style: TextStyle(fontSize: 30)),
 
-                icon: Icon(Icons.info),
+                icon: const Icon(Icons.info),
 
                 style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.black,
                   backgroundColor: Colors.white,
-                  primary: Colors.black,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),

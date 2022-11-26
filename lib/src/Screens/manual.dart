@@ -20,7 +20,7 @@ class _ManualState extends State<Manual> {
       body: SingleChildScrollView(
         child: Center(
           child: Column(
-            children: [
+            children: const [
               Text("使い方"),
             ],
           ),

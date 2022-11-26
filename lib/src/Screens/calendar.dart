@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 
@@ -13,8 +14,8 @@ class Calendar extends StatefulWidget {
 class _CalendarState extends State<Calendar> {
 
   dynamic dateTime;
-  var dateOnly;
-  var sensorTime;
+  dynamic dateOnly;
+  dynamic sensorTime;
 
   @override
   void initState() {
@@ -24,11 +25,11 @@ class _CalendarState extends State<Calendar> {
       final ref = FirebaseDatabase.instance.ref();
       hal.clear();
       sensorTime = await ref.child("sensor_time").get();
-      dateTime = await DateTime.now();
-      dateOnly = await '${dateTime.year}年${dateTime.month}月${dateTime.day}日';
+      dateTime = DateTime.now();
+      dateOnly = '${dateTime.year}年${dateTime.month}月${dateTime.day}日';
       setState(() {
         //awaitで非同期にしてFirebaseから値を取得するまで待ってる(awaitにはasyncが必須)
-        time = sensorTime.child("${dateTime.year}/${dateTime.month}/${dateTime.day}").value.toString()!;
+        time = sensorTime.child("${dateTime.year}/${dateTime.month}/${dateTime.day}").value.toString();
 
         time = time.replaceAll("{", "");
         time = time.replaceAll("}", "");
@@ -42,10 +43,11 @@ class _CalendarState extends State<Calendar> {
 
         hal.sort((a, b) => -a.compareTo(b));
 
-        print(dateTime);
-        print(dateOnly);
-        print(time);
-
+        if (kDebugMode) {
+          print(dateTime);
+          print(dateOnly);
+          print(time);
+        }
       });
     });
   }
@@ -62,7 +64,7 @@ class _CalendarState extends State<Calendar> {
         dateTime = datePicked;
         dateOnly = '${dateTime.year}/${dateTime.month}/${dateTime.day}' ;
         hal.clear();
-        time = sensorTime.child("${dateTime.year}/${dateTime.month}/${dateTime.day}").value.toString()!;
+        time = sensorTime.child("${dateTime.year}/${dateTime.month}/${dateTime.day}").value.toString();
 
         if(time != "null"){
           time = time.replaceAll("{", "");
@@ -102,9 +104,7 @@ class _CalendarState extends State<Calendar> {
         child: SingleChildScrollView(
           child: Column(
             children:[
-              Container(
-                  child: const Text("カレンダー",style: TextStyle(fontSize: 40.0))
-              ),
+              const Text("カレンダー",style: TextStyle(fontSize: 40.0)),
 
               Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -117,9 +117,7 @@ class _CalendarState extends State<Calendar> {
                     child: const Text("日付を選択"),
                   ),
 
-                  Container(
-                      child: Text("$dateOnly",style: TextStyle(fontSize: 40.0))
-                  ),
+                  Text("$dateOnly",style: const TextStyle(fontSize: 40.0)),
 
                   // for(var i = 0; i <= hal.length-1; i++)
 
@@ -141,7 +139,7 @@ class _CalendarState extends State<Calendar> {
                           width: MediaQuery.of(context).size.width * 0.50,
                           height: MediaQuery.of(context).size.height * 0.09,
                           child: Center(
-                              child: Text('${hal[index]}',style: TextStyle(fontSize: 40.0))
+                              child: Text('${hal[index]}',style: const TextStyle(fontSize: 40.0))
                           ),
                         ),
                       );

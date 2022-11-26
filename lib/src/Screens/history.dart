@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -23,13 +24,15 @@ class _HistoryState extends State<History> {
         hal.clear();
         DateTime now = DateTime.now();
         currentTime = '${now.year}年${now.month}月${now.day}日${now.hour}時${now.minute}分${now.second}秒';
-        time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString()!;
+        time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString();
         today = '${now.month}月${now.day}日';
-        print(time);
+        if (kDebugMode) {
+          print(time);
+        }
 
         if(time == "null") {
-          DateTime yd = now.subtract(Duration(days: 1));
-          time = sensorTime.child("${yd.year}/${yd.month}/${yd.day}").value.toString()!;
+          DateTime yd = now.subtract(const Duration(days: 1));
+          time = sensorTime.child("${yd.year}/${yd.month}/${yd.day}").value.toString();
           today = '${yd.month}月${yd.day}日';
         }
 
@@ -72,9 +75,7 @@ class _HistoryState extends State<History> {
           child: Column(
               children:[
 
-                Container(
-                    child: Text(today,style: TextStyle(fontSize: 50.0))
-                ),
+                Text(today,style: const TextStyle(fontSize: 50.0)),
 
                 ElevatedButton(
                     onPressed: () async{
@@ -87,12 +88,12 @@ class _HistoryState extends State<History> {
                         hal.clear();
                         DateTime now = DateTime.now();
                         currentTime = '${now.year}年${now.month}月${now.day}日${now.hour}時${now.minute}分${now.second}秒';
-                        time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString()!;
+                        time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString();
                         today = '${now.month}月${now.day}日';
 
                         if(time == "null") {
-                          DateTime yd = now.subtract(Duration(days: 1));
-                          time = sensorTime.child("${yd.year}/${yd.month}/${yd.day}").value.toString()!;
+                          DateTime yd = now.subtract(const Duration(days: 1));
+                          time = sensorTime.child("${yd.year}/${yd.month}/${yd.day}").value.toString();
                           today = '${yd.month}月${yd.day}日';
                         }
 
@@ -111,10 +112,12 @@ class _HistoryState extends State<History> {
                         hal.sort((a, b) => -a.compareTo(b));
                       });
 
-                      print("更新成功!!");
+                      if (kDebugMode) {
+                        print("更新成功!!");
+                      }
 
                     },
-                    child: Text("更新")
+                    child: const Text("更新")
                 ),
 
                 for(var i = 0; i <= hal.length-1; i++)
@@ -129,7 +132,7 @@ class _HistoryState extends State<History> {
                       height: MediaQuery.of(context).size.height * 0.09,
                       width: MediaQuery.of(context).size.width * 0.50,
                       child: Center(
-                        child: Text(hal[i],style: TextStyle(fontSize: 40.0),),
+                        child: Text(hal[i],style: const TextStyle(fontSize: 40.0),),
                       ),
                     ),
                   ),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mimamoru/src/Screens/setting.dart';
-import '../main.dart';
 import 'screens/history.dart';
 import 'screens/home.dart';
 
@@ -14,9 +13,9 @@ class MyStatefulWidget extends StatefulWidget {
 class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   static  final _screens = [
-    Home(),
-    History(),
-    Setting(),
+    const Home(),
+    const History(),
+    const Setting(),
   ];
 
   int _selectedIndex = 0;
