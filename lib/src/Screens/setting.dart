@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mimamoru/src/Screens/calendar.dart';
 import 'package:mimamoru/src/Screens/manual.dart';
+import 'package:mimamoru/src/Screens/push_notification.dart';
 
 import '../screens/account_setting.dart';
 
@@ -80,6 +81,27 @@ class _SettingState extends State<Setting> {
                 },
 
                 label: const Text("使い方",style: TextStyle(fontSize: 30)),
+
+                icon: const Icon(Icons.info),
+
+                style: OutlinedButton.styleFrom(
+                  foregroundColor: Colors.black,
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+
+            SizedBox(
+              width: MediaQuery.of(context).size.width*0.6,
+              child: ElevatedButton.icon(
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const PushNotification()));
+                },
+
+                label: const Text("通知設定",style: TextStyle(fontSize: 30)),
 
                 icon: const Icon(Icons.info),
 

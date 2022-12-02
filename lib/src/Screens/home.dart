@@ -13,8 +13,6 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-  String upDate = "";
-
   @override
   void initState(){
     super.initState();
@@ -34,6 +32,7 @@ class _HomeState extends State<Home> {
         if (kDebugMode) {
           print('--------------------------------------------------');
           print(currentTime);
+          print(currentTime.runtimeType);
           print('--------------------------------------------------');
         }
         time = sensorTime.child("${now.year}/${now.month}/${now.day}").value.toString();
@@ -60,6 +59,7 @@ class _HomeState extends State<Home> {
         hal_len = hal.length-1;
 
         if (kDebugMode) {
+          print(hal[1]);
           print(targetName);
           print(hal_len);
           print(hal_len.runtimeType);
@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
   String targetName = "";
   String time = "";
   List hal = [""];
-  var hal_len ;
+  dynamic hal_len ;
   String hal_Len = "";
 
 
